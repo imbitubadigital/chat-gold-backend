@@ -9,3 +9,50 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String                 @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String                 @unique
+  password  String
+  active    Boolean                @default(false)
+  createdAt DateTime               @default(now())
+  updatedAt DateTime               @default(now())
+  roles     Role[]                 @relation("user_role")
+  refresh   Refresh[]
+  codes     CodeVerificationUser[]
+
+  @@map("user")
+}
+
+model CodeVerificationUser {
+  id         String   @id @default(uuid())
+  code       Int
+  expiration String
+  createdAt  DateTime @default(now())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@map("code_verification_user")
+}
+
+model Role {
+  id    String @id @default(uuid())
+  value String @unique
+  label String @unique
+  type  String @default("USER")
+  users User[] @relation("user_role")
+
+  @@map("role")
+}
+
+model Refresh {
+  id         String   @id @default(uuid())
+  expiration String   @unique
+  createdAt  DateTime @default(now())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@map("refresh")
+}
