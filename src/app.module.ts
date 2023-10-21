@@ -8,6 +8,7 @@ import { SeedModule } from './modules/seed/seed.module';
 import { PasswordModule } from './modules/password/password.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { RoomModule } from './modules/room/room.module';
+import { SocketModule } from './modules/socket/socket.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { RoomModule } from './modules/room/room.module';
     SeedModule,
     PasswordModule,
     RoomModule,
+    SocketModule,
   ],
   controllers: [AppController],
   providers: [AppService],
