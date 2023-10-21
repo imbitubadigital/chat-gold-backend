@@ -7,6 +7,7 @@ import { UserModule } from './modules/user/user.module';
 import { SeedModule } from './modules/seed/seed.module';
 import { PasswordModule } from './modules/password/password.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { RoomModule } from './modules/room/room.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AuthModule } from './modules/auth/auth.module';
     UserModule,
     SeedModule,
     PasswordModule,
+    RoomModule,
   ],
   controllers: [AppController],
   providers: [AppService],

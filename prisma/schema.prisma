@@ -61,10 +61,9 @@ model Refresh {
 }
 
 model Room {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   name      String   @unique
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
 
   messages   Message[]
   joinedRoom JoinedRoom[]
@@ -75,7 +74,7 @@ model Room {
 model JoinedRoom {
   id       Int    @id @default(autoincrement())
   userId   String
-  roomId   Int
+  roomId   String
   socketId String
 
   user User @relation(fields: [userId], references: [id])
@@ -87,7 +86,7 @@ model JoinedRoom {
 model Message {
   id        Int      @id @default(autoincrement())
   userId    String
-  roomId    Int
+  roomId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

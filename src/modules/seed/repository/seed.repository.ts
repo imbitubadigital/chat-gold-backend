@@ -5,6 +5,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateRoleSeedDto } from '../dto/create-role-seed.dto';
 
 import { CreateUserAdminSeedDto } from '../dto/create-user-admin-seed.dto';
+import { CreateRoomsSeedDto } from '../dto/create-rooms-seed.dto';
 
 @Injectable()
 export class SeedRepository {
@@ -57,6 +58,28 @@ export class SeedRepository {
     );
   }
 
+  async createRooms(createRoomsSeedDto: CreateRoomsSeedDto[]): Promise<void> {
+    await Promise.all(
+      createRoomsSeedDto.map(async role => {
+        const { name } = role;
+        if (!(await this.getRoom(name))) {
+          await this.prisma.room.create({
+            data: {
+              name,
+            },
+          });
+        }
+      }),
+    );
+  }
+
+  private async getRoom(name: string) {
+    return this.prisma.room.findUnique({
+      where: {
+        name,
+      },
+    });
+  }
   private async getRole(value: string) {
     return this.prisma.role.findUnique({
       where: {

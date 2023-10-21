@@ -20,3 +20,18 @@ export const users = [
     role: 'ADMIN',
   },
 ];
+
+export const rooms = [
+  {
+    name: 'Javascript',
+  },
+  {
+    name: 'Java',
+  },
+  {
+    name: 'PHP',
+  },
+  {
+    name: 'Python',
+  },
+];

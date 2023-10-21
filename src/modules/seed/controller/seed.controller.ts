@@ -1,7 +1,7 @@
 import { Controller, Post } from '@nestjs/common';
 
 import { ApiExcludeController } from '@nestjs/swagger';
-import { roles, users } from '../data';
+import { roles, users, rooms } from '../data';
 import { SeedService } from '../services/seed.service';
 
 @ApiExcludeController()
@@ -13,6 +13,7 @@ export class SeedController {
   async create() {
     await this.seedService.createRoles(roles);
     await this.seedService.createUserAdmin(users);
+    await this.seedService.createRooms(rooms);
 
     return {
       result: 'Seeds criadas com sucesso',
