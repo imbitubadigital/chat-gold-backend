@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ResponseCreateUserDto } from '../dto/response-create-user';
 import { CreateDataUserDto } from '../dto/create-data-user.dto';
-import { UserEntity } from 'src/modules/entities/user.entity';
+import { UserEntity } from '../entities/user.entity';
 
 @Injectable()
 export class UserRepository {

@@ -1,6 +1,7 @@
 import { User } from '@prisma/client';
 import { CodeVerificationUserEntity } from './code-verification-user.entity';
 import { RoleEntity } from 'src/modules/role/entities/role.entity';
+import { JoinedRoomEntity } from 'src/modules/joinedRoom/entities/joindeRoom.entity';
 
 export class UserEntity implements User {
   id: string;
@@ -13,4 +14,5 @@ export class UserEntity implements User {
   updatedAt: Date;
   codes?: CodeVerificationUserEntity[];
   roles?: RoleEntity[];
+  joinedRoom?: JoinedRoomEntity[];
 }

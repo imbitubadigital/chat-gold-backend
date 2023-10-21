@@ -23,6 +23,9 @@ model User {
   refresh   Refresh[]
   codes     CodeVerificationUser[]
 
+  messages   Message[]
+  joinedRoom JoinedRoom[]
+
   @@map("user")
 }
 
@@ -55,4 +58,41 @@ model Refresh {
   user       User     @relation(fields: [userId], references: [id])
 
   @@map("refresh")
+}
+
+model Room {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  messages   Message[]
+  joinedRoom JoinedRoom[]
+
+  @@map("room")
+}
+
+model JoinedRoom {
+  id       Int    @id @default(autoincrement())
+  userId   String
+  roomId   Int
+  socketId String
+
+  user User @relation(fields: [userId], references: [id])
+  room Room @relation(fields: [roomId], references: [id])
+
+  @@map("joined_room")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  roomId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+  room Room @relation(fields: [roomId], references: [id])
+
+  @@map("message")
 }

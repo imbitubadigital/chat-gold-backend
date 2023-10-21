@@ -5,7 +5,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { ChangePasswordDto } from '../dto/change-password.dto';
 import { CreateCodeDto } from '../dto/create-code.dto';
 import { CodeVerificationUserEntity } from 'src/modules/user/entities/code-verification-user.entity';
-import { UserEntity } from 'src/modules/entities/user.entity';
+import { UserEntity } from 'src/modules/user/entities/user.entity';
 
 @Injectable()
 export class PasswordRepository {
