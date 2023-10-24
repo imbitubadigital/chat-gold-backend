@@ -9,6 +9,7 @@ import { PasswordModule } from './modules/password/password.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { RoomModule } from './modules/room/room.module';
 import { SocketModule } from './modules/socket/socket.module';
+import { MessageModule } from './modules/message/message.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SocketModule } from './modules/socket/socket.module';
     PasswordModule,
     RoomModule,
     SocketModule,
+    MessageModule,
   ],
   controllers: [AppController],
   providers: [AppService],

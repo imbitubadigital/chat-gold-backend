@@ -57,4 +57,8 @@ export class UserService {
 
     return client;
   }
+
+  async checkUserExist(roomId: string): Promise<boolean> {
+    return this.userRepository.checkUserExist(roomId);
+  }
 }

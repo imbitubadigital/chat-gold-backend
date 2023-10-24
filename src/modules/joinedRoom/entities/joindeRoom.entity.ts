@@ -5,6 +5,4 @@ export class JoinedRoomEntity implements JoinedRoom {
   roomId: string;
   socketId: string;
   id: number;
-  name: string;
-  createdAt: Date;
 }

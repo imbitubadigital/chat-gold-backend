@@ -40,7 +40,8 @@ export class MailGmailService {
 
       const mail: Mail.Options = {
         subject,
-        from: `Fidelion < ${process.env.SMTP_GMAIL_USER}`,
+        from: `
+        ChatGold < ${process.env.SMTP_GMAIL_USER}`,
         to: [destination],
         html,
       };

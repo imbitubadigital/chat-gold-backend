@@ -49,4 +49,20 @@ export class UserRepository {
       where: { email },
     });
   }
+
+  async checkUserExist(roomId: string): Promise<boolean> {
+    const room = await this.prisma.user.findUnique({
+      where: {
+        id: roomId,
+      },
+      select: {
+        id: true,
+      },
+    });
+    if (room) {
+      return true;
+    }
+
+    return false;
+  }
 }

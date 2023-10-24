@@ -76,9 +76,8 @@ model JoinedRoom {
   userId   String
   roomId   String
   socketId String
-
-  user User @relation(fields: [userId], references: [id])
-  room Room @relation(fields: [roomId], references: [id])
+  user     User   @relation(fields: [userId], references: [id])
+  room     Room   @relation(fields: [roomId], references: [id])
 
   @@map("joined_room")
 }
@@ -89,6 +88,8 @@ model Message {
   roomId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  type      String
+  content   String
 
   user User @relation(fields: [userId], references: [id])
   room Room @relation(fields: [roomId], references: [id])
