@@ -9,6 +9,7 @@ import { ResponseCreateUserDto } from '../dto/response-create-user';
 import { ConflictError } from 'src/common/errors/types/ConflictError';
 import { MailGmailService } from 'src/modules/mail/service/mailGmail.service';
 import { UserRepository } from '../repository/user.repository';
+import { UserEntity } from '../entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -60,5 +61,9 @@ export class UserService {
 
   async checkUserExist(roomId: string): Promise<boolean> {
     return this.userRepository.checkUserExist(roomId);
+  }
+
+  async getAll(): Promise<UserEntity[]> {
+    return this.userRepository.getAll();
   }
 }

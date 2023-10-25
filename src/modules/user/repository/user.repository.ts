@@ -65,4 +65,8 @@ export class UserRepository {
 
     return false;
   }
+
+  async getAll(): Promise<UserEntity[]> {
+    return this.prisma.user.findMany();
+  }
 }

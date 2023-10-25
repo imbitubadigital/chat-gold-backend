@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 
 import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from '../dto/create-user.dto';
@@ -20,5 +20,12 @@ export class UserController {
     // ): Promise<any> {
   ): Promise<ResponseCreateUserDto> {
     return this.userService.create(createUserDto);
+  }
+
+  @ApiResponse({ status: 400, description: 'Campos obrigatórios' })
+  @ApiResponse({ status: 401, description: 'Usuário não autorizado' })
+  @Get()
+  async getAll(): Promise<any> {
+    return this.userService.getAll();
   }
 }
