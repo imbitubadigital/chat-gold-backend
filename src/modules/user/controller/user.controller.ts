@@ -4,6 +4,7 @@ import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { ResponseCreateUserDto } from '../dto/response-create-user';
 import { UserService } from '../services/user.service';
+import { UserEntity } from '../entities/user.entity';
 
 @ApiTags('Users')
 @ApiBearerAuth()
@@ -22,10 +23,11 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  // @ApiResponse({ status: 201, type: ResponseCreateUserDto })
   @ApiResponse({ status: 400, description: 'Campos obrigatórios' })
   @ApiResponse({ status: 401, description: 'Usuário não autorizado' })
   @Get()
-  async getAll(): Promise<any> {
+  async getAll(): Promise<UserEntity[]> {
     return this.userService.getAll();
   }
 }
